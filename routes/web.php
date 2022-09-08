@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WelcomeController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +26,9 @@ Route::controller(ContactController::class)->name('contacts.')->group(function()
     Route::get('/contacts/{id}', [ContactController::class, 'show'])->whereNumber('id')->name('show');
 });
     
+Route::resource('/companies', CompanyController::class);
 
-
-
-Route::fallback(function (){
-    return "<h1>Sorry, this page does not exist :( </h1>";
-});
-
-// Route::get('/companies/{name?}', function($name = null){
-//     if ($name) {
-//         return "Company " . $name;
-//     } else {
-//         return "All companies";
-//     }
-// })->whereAlphaNumeric('name'); // alphabetical symbols and numbers
+Route::resources([
+    '/tags' => TagController::class,
+    '/tasks' => TaskController::class
+]);
