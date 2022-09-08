@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TaskController;
@@ -31,4 +32,8 @@ Route::resource('/companies', CompanyController::class);
 Route::resources([
     '/tags' => TagController::class,
     '/tasks' => TaskController::class
+]);
+
+Route::resource('/activities', ActivityController::class)->except([
+    'index', 'show'
 ]);
