@@ -30,15 +30,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                {{-- @forelse ($contacts as $id => $contact)               
-                  @include('contacts._contact',['contact' => $contact])
+                @forelse ($contacts as $index => $contact)               
+                  @include('contacts._contact',['contact' => $contact, 'index' => $index])
                 @empty
-                <p>No contacts found</p>
-                @endforelse --}}
-                @each('contacts._contact', $contacts, 'contact', 'contacts._empty')
+                @include('contacts._empty')
+                @endforelse
+                {{-- @each('contacts._contact', $contacts, 'contact', 'contacts._empty') --}}
                 </tbody>
               </table> 
-              {{ $contacts->links() }}
+              {{ $contacts->withQueryString()->links() }}
             </div>
           </div>
         </div>
