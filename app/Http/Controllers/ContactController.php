@@ -40,16 +40,24 @@ class ContactController extends Controller
         return view('contacts.index', compact('contacts', 'companies'));
     }
 
-    public function create()
-    {
-        return view('contacts.create');
-    }
 
     public function show($id)
     {
         
         $contact = Contact::findOrFail($id);
         return view('contacts.show')->with('contact', $contact);
+    }
+
+    public function create()
+    {
+        $companies = $this->company->pluck();
+
+        return view('contacts.create', compact('companies'));
+    }
+
+    public function store()
+    {
+        dd('Store');
     }
     
 }
