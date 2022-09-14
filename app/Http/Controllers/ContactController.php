@@ -27,6 +27,9 @@ class ContactController extends Controller
             if ($companyId = request()->query("company_id")) {
                 $query->where("company_id", $companyId);
             }
+            if ($search = request('search')){
+                $query->where('first_name', 'LIKE', "%{$search}%");
+            }
         })->paginate(10);
         // $perPage = 10;
         // $currentPage = request()->query('page', 1);

@@ -11,6 +11,8 @@
     <!-- Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    @vite(['resources/css/app.css'])
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
   </head>
   <body>
@@ -49,8 +51,9 @@
 
     @yield('content')
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/popper.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    @vite(['resources/js/app.js'])
   </body>
 </html>
